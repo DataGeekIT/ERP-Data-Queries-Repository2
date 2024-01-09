@@ -1,6 +1,6 @@
 # ERP-Data-Queries-Repository2
 
-
+TRNASACTION ISSUE/ RECEIPT - SUPPLY CHAIN - INVENTORY
 This SQL code appears to be a SELECT statement retrieving data from a table named twhinr1101000 with an alias wh. The code selects various columns and performs some transformations on the data. Here's a breakdown:
 
 Selected Columns:
