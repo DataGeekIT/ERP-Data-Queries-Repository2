@@ -1,45 +1,48 @@
 # ERP-Data-Queries-Repository2
 
-TRNASACTION ISSUE/ RECEIPT - SUPPLY CHAIN - INVENTORY
-This SQL code appears to be a SELECT statement retrieving data from a table named twhinr1101000 with an alias wh. The code selects various columns and performs some transformations on the data. Here's a breakdown:
+**TRNASACTION ISSUE/ RECEIPT - SUPPLY CHAIN - INVENTORY**
+
+This SQL code appears to be a SELECT statement retrieving data from a table named twhinr1101000 with an alias wh. The code selects various columns and performs some transformations on the data. 
+
+Here's a breakdown:
 
 Selected Columns:
 
-LTRIM(wh.t_item) AS 'Item'
+LTRIM(wh.t_item) AS **'Item'**
 
-wh.t_cwar AS 'Warehouse'
+wh.t_cwar AS **'Warehouse'**
 
-wh.t_trdt AS 'Transaction Date'
+wh.t_trdt AS **'Transaction Date'**
 
-wh.t_seqn AS 'Sequence'
+wh.t_seqn AS **'Sequence'**
 
-wh.t_ocmp AS 'Order Company'
+wh.t_ocmp AS **'Order Company'**
 
-wh.t_koor AS 'Type of Order'
+wh.t_koor AS **'Type of Order'**
 
 'Type of Order Desc' = (SELECT top(1) ...)
 
-wh.t_orno AS 'Order'
+wh.t_orno AS **'Order'**
 
-wh.t_pono AS 'Order Line'
+wh.t_pono AS **'Order Line'**
 
-wh.t_srnb AS 'Order Sequence'
+wh.t_srnb AS **'Order Sequence'**
 
-wh.t_itid AS 'Transaction ID'
+wh.t_itid AS **'Transaction ID'**
 
-wh.t_qstk AS 'Quantity'
+wh.t_qstk AS **'Quantity'**
 
-wh.t_kost AS 'Transaction Type'
+wh.t_kost AS **'Transaction Type'**
 
 'Transaction Type Desc' = (SELECT top(1) ...)
 
-wh.t_site AS 'Site'
+wh.t_site AS **'Site'**
 
-wh.t_rcno AS 'Receipt'
+wh.t_rcno AS **'Receipt'**
 
-wh.t_shpm AS 'Shipment'
+wh.t_shpm AS **'Shipment'**
 
-wh.t_bpid AS 'Business Partner'
+wh.t_bpid AS **'Business Partner'**
 
 'Internal transfer' = CASE ... END
 
