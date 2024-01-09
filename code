@@ -1,0 +1,50 @@
+SELECT 
+ LTRIM(wh.t_item) AS 'Item',
+ wh.t_cwar AS 'Warehouse',
+ wh.t_trdt AS 'Transaction Date',
+ wh.t_seqn AS 'Sequence',
+ wh.t_ocmp AS 'Order Company',
+ wh.t_koor AS 'Type of Order',
+ 'Type of Order Desc' = (SELECT top(1)
+        -- t1.t_cnst as 'ToDoCode'
+           t2.t_desc as 'ToDoDesc'
+           FROM erplndb.dbo.tttadv401000 as t1
+           LEFT JOIN erplndb.dbo.tttadv140000 t2 ON t1.t_za_clab = t2.t_clab  
+           WHERE t1.t_cpac = 'tc'      --Package
+           AND t1.t_cdom = 'koor'  --Domain
+           AND t2.t_clan = '2'
+           and t1.t_cnst = wh.t_koor) ,  --English) ,
+ wh.t_orno AS 'Order',
+ wh.t_pono AS 'Order Line',
+ wh.t_srnb AS 'Order Sequence',
+ wh.t_itid AS 'Transaction ID',
+ wh.t_qstk AS 'Quantity',
+ wh.t_kost AS 'Transaction Type',
+ 'Transaction Type Desc' = (SELECT top(1)
+        -- t1.t_cnst as 'ToDoCode'
+           t2.t_desc as 'ToDoDesc'
+           FROM erplndb.dbo.tttadv401000 as t1
+           LEFT JOIN erplndb.dbo.tttadv140000 t2 ON t1.t_za_clab = t2.t_clab  
+           WHERE t1.t_cpac = 'tc'      --Package
+           AND t1.t_cdom = 'kost'  --Domain
+           AND t2.t_clan = '2'
+           and t1.t_cnst = wh.t_kost) ,  --English) ,
+ wh.t_site AS 'Site',
+ wh.t_rcno AS 'Receipt',
+ wh.t_shpm AS 'Shipment',
+ wh.t_bpid AS 'Business Partner',
+ 'Internal transfer' =
+        CASE
+          when (select top(1) whinh200.t_sfsi 
+          from twhinh2001000 as ""whinh200"" 
+          where whinh200.t_orno = wh.t_orno 
+          and wh.t_koor not in  ('1','51')  ) =
+            (select top(1) whinh200.t_stsi 
+            from twhinh2001000 as ""whinh200"" 
+            where whinh200.t_orno = wh.t_orno 
+            and wh.t_koor  not in  ('1','51')  )  and wh.t_koor = '36'    then 'Yes'
+else 'No'
+        END
+ 
+FROM twhinr1101000 as wh
+
