@@ -24,6 +24,8 @@ wh.t_rcno AS 'Receipt'
 wh.t_shpm AS 'Shipment'
 wh.t_bpid AS 'Business Partner'
 'Internal transfer' = CASE ... END
+
+
 Subqueries:
 
 Two subqueries are used to retrieve the description for 'Type of Order' and 'Transaction Type' based on certain conditions from tables erplndb.dbo.tttadv401000 and erplndb.dbo.tttadv140000.
